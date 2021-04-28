@@ -1,8 +1,8 @@
 import { AbstractDBMS } from "./abstract-dbms";
 import { User } from "../../library/models/user.model";
-import { Connection, DBChangeResult, r, RDatum, TableChangeResult, WriteResult } from "rethinkdb-ts";
 import { Role } from "../../library/models/role.model";
 import { Home } from "../../library/models/home.model";
+import { Connection, DBChangeResult, r, RDatum, TableChangeResult, WriteResult } from "rethinkdb-ts";
 
 export class RethinkDBMSService extends AbstractDBMS {
 

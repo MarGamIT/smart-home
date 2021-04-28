@@ -4,7 +4,6 @@ import { AbstractApi } from "./abstract-api";
 import bodyParser from 'body-parser';
 import express from "express";
 import cors from "cors";
-import { Home } from "../../library/models/home.model";
 import { User } from "../../library/models/user.model";
 
 export class ExpressApiService extends AbstractApi {
@@ -116,7 +115,7 @@ export class ExpressApiService extends AbstractApi {
             }
 
             if (result?.replaced > 0) {
-                this.logger.logInfo("Updated user");
+                this.logger.logInfo("Updated Home");
             }
 
             response.status(200).send({ status: "200" });
@@ -137,7 +136,7 @@ export class ExpressApiService extends AbstractApi {
             const result = await this.dbms.insertHomeAsync(request.body);
 
             if (result) {
-                this.logger.logInfo("Inserted new user");
+                this.logger.logInfo("Inserted new home");
                 response.status(201).send({ status: "201" });
                 return;
             }
@@ -154,7 +153,7 @@ export class ExpressApiService extends AbstractApi {
     public getHomeAsync = async (request: express.Request, response: express.Response): Promise<void> => {
         try {
             let result = await this.dbms.getHomeAsync(request.body.id);
-            this.logger.logInfo("Sent available users");
+            this.logger.logInfo("Sent home");
             response.status(200).send(result);
         }
         catch (error) {
