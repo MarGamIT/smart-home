@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControlComponent implements OnInit {
 
-  constructor() { }
+  public isActivated: boolean = true;
+  public value: number;
+
+  constructor() {
+    this.value = 20;
+  }
 
   ngOnInit(): void {
   }
-
 }

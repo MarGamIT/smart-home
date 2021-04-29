@@ -1,1 +1,28 @@
 <app-navigation></app-navigation>
+
+<div class="view">
+    <div class="p-p-4 wrapper">
+        <div class="p-grid view">
+            <p-card style="width: 400px;" class="p-col-3 p-2 fixed" header="AC" subheader="Current: 23°C"
+                styleClass="p-card-shadow">
+                <div>
+                    <div class="p-field">
+                        <label for="valueBox" style="width:100px">Value to set: </label>
+                        <p-inputNumber [(ngModel)]="value" mode="decimal" [showButtons]="true" inputId="valueBox"
+                            [min]="16" [max]="26">
+                        </p-inputNumber>
+                    </div>
+                </div>
+                <div>
+                    <div class="p-field">
+                        <label for="valueBox">Is Active: </label>
+                        <p-inputSwitch [(ngModel)]="isActivated"></p-inputSwitch>
+                    </div>
+                </div>
+                <ng-template pTemplate="footer">
+                    <p-button label="Change" icon="pi pi-check"></p-button>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>

@@ -6,10 +6,10 @@ import { User } from "./user.model";
 export interface Home {
     id: string;
     members: User[];
-    Room: Room[];
+    module: Module[];
 }
 
-export interface Room {
+export interface Module {
     id: string;
     name: string;
     sensors: Sensor[];
