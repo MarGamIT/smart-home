@@ -1,0 +1,23 @@
+.view {
+    height: 100%;
+}
+
+.wrapper {
+    border: 6px double;
+    border-color: var(--primary-color);
+    border-radius: 5%;
+}
+
+.title {
+    font-size: xx-large;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.signup {
+    font-size: small;
+}
+
+.signup-link {
+    color: var(--primary-color);
+}

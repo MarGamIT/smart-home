@@ -1,0 +1,11 @@
+<p-menubar [model]="items">
+    <ng-template pTemplate="start">
+        <img src="../../../assets/pictures/icon.png" height="40" class="p-mr-2">
+    </ng-template>
+    <ng-template pTemplate="end">
+        <span class="p-menuitem-link" (click)="signOut()">
+            <i class="p-menuitem-icon pi pi-fw pi-sign-out"></i>
+            <span class="p-menuitem-text">Sign out</span>       
+        </span>
+      </ng-template>
+</p-menubar>
