@@ -1,15 +1,21 @@
 <div class="p-d-flex p-flex-row p-jc-center p-ai-center view">
-    <div class="p-d-flex p-flex-column p-ai-center p-p-4 wrapper">
+    <form [formGroup]="loginForm" class="p-d-flex p-flex-column p-ai-center p-p-4 wrapper">
         <span class="title">login</span>
         <span class="p-input-icon-left p-my-3">
             <i class="pi pi-user"></i>
-            <input type="text" pInputText placeholder="Username">         
+            <input type="text" pInputText placeholder="Username" class="form-control" formControlName="name">         
         </span>
+        <small *ngIf="loginForm.controls.name.invalid && loginForm.controls.name.dirty" class="p-invalid">Username
+            required</small>
         <span class="p-input-icon-left p-mb-3">
             <i class="pi pi-key"></i>
-            <input type="password" pInputText placeholder="Password">         
+            <input type="password" pInputText placeholder="Password" class="form-control"
+            formControlName="password">         
         </span>
-        <button pButton type="button" label="Sign in" class="p-button-outlined p-button-rounded p-as-stretch"></button>
+        <small *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty"
+                class="p-invalid">Password required</small>
+        <button pButton type="button" label="Sign in" class="p-button-outlined p-button-rounded p-as-stretch" [disabled]="!loginForm.valid || loginButtonDisabled" (click)="loginAsync()"></button>
         <span class="signup p-mt-3">Not a member? <a class="signup-link" routerLink="/registration">Signup</a></span>
-    </div>
+    </form>
+    <p-toast position="bottom-center" key="loginError"></p-toast>
 </div>

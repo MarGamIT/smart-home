@@ -1,15 +1,22 @@
 <div class="p-d-flex p-flex-row p-jc-center p-ai-center view">
-    <div class="p-d-flex p-flex-column p-ai-center p-p-4 wrapper">
+    <form [formGroup]="registerForm" class="p-d-flex p-flex-column p-ai-center p-p-4 wrapper">
         <span class="title">registration</span>
         <span class="p-input-icon-left p-my-3">
             <i class="pi pi-user"></i>
-            <input type="text" pInputText placeholder="Username">         
+            <input type="text" pInputText placeholder="Username" class="form-control" formControlName="name">         
         </span>
+        <small *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.dirty"
+                class="p-invalid">Username required</small>
         <span class="p-input-icon-left p-mb-3">
             <i class="pi pi-key"></i>
-            <input type="password" pInputText placeholder="Password">         
+            <input type="password" pInputText placeholder="Password" class="form-control"
+            formControlName="password">
+            <small *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.dirty"
+                class="p-invalid">Password required</small>         
         </span>
-        <button pButton type="button" label="Sign up" class="p-button-outlined p-button-rounded p-as-stretch"></button>
+        <button pButton type="button" label="Sign up" class="p-button-outlined p-button-rounded p-as-stretch" ></button>
         <span class="signin p-mt-3">Already a member? <a class="signin-link" routerLink="/login">Signin</a></span>
-    </div>
+    </form>
+    <p-toast position="bottom-center" key="registrationSuccess"></p-toast>
+    <p-toast position="bottom-center" key="registrationError"></p-toast>
 </div>
