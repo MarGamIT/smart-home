@@ -1,28 +1,109 @@
 <app-navigation></app-navigation>
+<div class="p-grid p-my-4 p-mx-2" [value]="modules">
 
-<div class="view">
-    <div class="p-p-4 wrapper">
-        <div class="p-grid view">
-            <p-card style="width: 400px;" class="p-col-3 p-2 fixed" header="AC" subheader="Current: 23°C"
-                styleClass="p-card-shadow">
-                <div>
-                    <div class="p-field">
-                        <label for="valueBox" style="width:100px">Value to set: </label>
-                        <p-inputNumber [(ngModel)]="value" mode="decimal" [showButtons]="true" inputId="valueBox"
-                            [min]="16" [max]="26">
-                        </p-inputNumber>
-                    </div>
+    ng-template
+
+
+
+
+
+
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Nursery" subheader="Measured: 20,0 °C">
+            <div></div>
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between">
+                    <i class="pi pi-sliders-h p-as-center" style="font-size: x-large;"></i>
+                    <p-inputNumber suffix="℃" [min]="14" [max]="28" [(ngModel)]="nurseryValue" class="p-ml-3"></p-inputNumber>
                 </div>
-                <div>
-                    <div class="p-field">
-                        <label for="valueBox">Is Active: </label>
-                        <p-inputSwitch [(ngModel)]="isActivated"></p-inputSwitch>
-                    </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Floor lamp" subheader="Power: 400 W">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between p-pt-1">
+                    <i *ngIf="!floorLampValue" class="pi pi-sun p-as-center" style="font-size: x-large;"></i>
+                    <i *ngIf="floorLampValue" class="pi pi-sun p-as-center" style="font-size: x-large; color: yellow;"></i>
+                    <p-inputSwitch [(ngModel)]="floorLampValue" class="p-ml-3"></p-inputSwitch>
                 </div>
-                <ng-template pTemplate="footer">
-                    <p-button label="Change" icon="pi pi-check"></p-button>
-                </ng-template>
-            </p-card>
-        </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Living room" subheader="Measured: 14,0 °C">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between">
+                    <i class="pi pi-sliders-h p-as-center" style="font-size: x-large;"></i>
+                    <p-inputNumber suffix="℃" [min]="14" [max]="28" [(ngModel)]="livingRoomValue" class="p-ml-3"></p-inputNumber>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Kitchen lamp" subheader="Power: 200 W">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between p-pt-1">
+                    <i *ngIf="!kitchenLampValue" class="pi pi-sun p-as-center" style="font-size: x-large;"></i>
+                    <i *ngIf="kitchenLampValue" class="pi pi-sun p-as-center" style="font-size: x-large; color: yellow;"></i>
+                    <p-inputSwitch [(ngModel)]="kitchenLampValue" class="p-ml-3"></p-inputSwitch>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Kitchen" subheader="Measured: 28,0 °C">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between">
+                    <i class="pi pi-sliders-h p-as-center" style="font-size: x-large;"></i>
+                    <p-inputNumber suffix="℃" [min]="14" [max]="28" [(ngModel)]="kitchenValue" class="p-ml-3"></p-inputNumber>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="LED lights" subheader="Power: 12,34 W">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between p-pt-1">
+                    <p-colorPicker [(ngModel)]="ledLightsValue"></p-colorPicker>
+                    <i class="pi pi-sun p-as-center" [ngStyle]="{'font-size': 'x-large', 'color': ledLightsValue}"></i>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Oven" subheader="Power: 99,99 W">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between p-pt-1">
+                    <i *ngIf="!ovenValue" class="pi pi-power-off p-as-center" style="font-size: x-large; color: red;"></i>
+                    <i *ngIf="ovenValue" class="pi pi-power-off p-as-center" style="font-size: x-large; color: green;"></i>
+                    <p-inputSwitch [(ngModel)]="ovenValue" class="p-ml-3"></p-inputSwitch>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="TV" subheader="Running: Game of Thrones">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between p-pt-1">
+                    <i *ngIf="!tvValue" class="pi pi-power-off pi-circle-off" style="font-size: x-large; color: red;"></i>
+                    <i *ngIf="tvValue" class="pi pi-power-off pi-circle-on" style="font-size: x-large; color: green;"></i>
+                    <p-inputSwitch [(ngModel)]="tvValue" class="p-ml-3"></p-inputSwitch>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Fridge" subheader="Measured: -4,0 °C">
+            <ng-template pTemplate="footer">
+                <div class="p-d-flex p-jc-between">
+                    <i class="pi pi-tablet p-as-center" style="font-size: x-large; color: lightblue;"></i>
+                    <p-inputNumber suffix="℃" [min]="-20" [max]="0" [(ngModel)]="fridgeValue" class="p-ml-3"></p-inputNumber>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="p-col-12">
+        <button pButton type="button" label="Confirm changes" class="p-button-outlined p-button-rounded"></button>
     </div>
 </div>

@@ -42,6 +42,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ColorPickerModule } from 'primeng/colorpicker';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
     RippleModule,
     TooltipModule,
     DropdownModule,
+    ColorPickerModule
   ],
   providers: [
     {

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'controlpanel', component: ControlComponent },
+  { path: 'control', component: ControlComponent },
   // { path: 'controlpanel', component: ControlComponent, canActivate: [AuthenticationGuardService] },
   { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuardService] },
