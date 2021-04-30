@@ -3,10 +3,11 @@ import { User } from "../../library/models/user.model";
 import { Role } from "../../library/models/role.model";
 import { Home } from "../../library/models/home.model";
 import { Connection, DBChangeResult, r, RDatum, TableChangeResult, WriteResult } from "rethinkdb-ts";
+import { LogMessage } from "../../library/models/logMessage.model";
 
 export class RethinkDBMSService extends AbstractDBMS {
 
-    public constructor(private host: string, private port: number, private database: string, private userTable: string, private homeTable: string) {
+    public constructor(private host: string, private port: number, private database: string, private userTable: string, private homeTable: string, private historyTable: string) {
         super();
     }
 
@@ -141,6 +142,39 @@ export class RethinkDBMSService extends AbstractDBMS {
         return result[0];
     }
 
+
+    public async getLogMessagesAsync(): Promise<LogMessage[]> {
+        const connection = await this.connectAsync();
+        return r.db(this.database)
+            .table(this.historyTable)
+            .run(connection);
+    }
+
+    public async insertLogMessageAsync(logMessage: LogMessage): Promise<WriteResult> {
+        logMessage.id = await this.getUniqueID();
+
+        const connection = await this.connectAsync();
+        return r.db(this.database)
+            .table(this.historyTable)
+            .insert(logMessage)
+            .run(connection);
+    }
+
+    public async resetTableName(nameOfTable: string): Promise<TableChangeResult> {
+        const connection = await this.connectAsync();
+        return r.db(this.database)
+            .tableDrop(nameOfTable)
+            .run(connection);
+    }
+
+
+    public async resetDatabase(): Promise<DBChangeResult> {
+        const connection = await this.connectAsync();
+        return r.dbDrop(this.database).run(connection);
+    }
+
+
+
     // initializes dbms
     public async initializeSystemAsync(): Promise<boolean> {
         const connection = await this.connectAsync();
@@ -154,7 +188,6 @@ export class RethinkDBMSService extends AbstractDBMS {
 
         return !!databaseResult.dbs_created || !!userTableResult.tables_created || !!entryTableResult.tables_created;
     }
-
 
     // builds a database connection
     protected connectAsync(): Promise<Connection> {

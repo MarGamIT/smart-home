@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import express from "express";
 import cors from "cors";
 import { User } from "../../library/models/user.model";
+import { LogMessage } from "../../library/models/logMessage.model";
 
 export class ExpressApiService extends AbstractApi {
 
@@ -99,6 +100,30 @@ export class ExpressApiService extends AbstractApi {
         }
     }
 
+    // creates home
+    public createHomeAsync = async (request: express.Request, response: express.Response): Promise<void> => {
+        try {
+            if (!request.body.members || !request.body.modules) {
+                response.sendStatus(400);
+                return;
+            }
+
+            const result = await this.dbms.insertHomeAsync(request.body);
+
+            if (result) {
+                this.logger.logInfo("Inserted new home");
+                response.status(201).send({ status: "201" });
+                return;
+            }
+
+            response.sendStatus(400);
+        }
+        catch (error) {
+            this.logger.logError('Can\'t connect to database');
+            response.sendStatus(500);
+        }
+    }
+
     // updates user
     public updateHomeAsync = async (request: express.Request, response: express.Response): Promise<void> => {
         try {
@@ -119,29 +144,6 @@ export class ExpressApiService extends AbstractApi {
             }
 
             response.status(200).send({ status: "200" });
-        }
-        catch (error) {
-            this.logger.logError('Can\'t connect to database');
-            response.sendStatus(500);
-        }
-    }
-
-    public createHomeAsync = async (request: express.Request, response: express.Response): Promise<void> => {
-        try {
-            // if (!request.body.name || !request.body.password) {
-            //     response.sendStatus(400);
-            //     return;
-            // }
-
-            const result = await this.dbms.insertHomeAsync(request.body);
-
-            if (result) {
-                this.logger.logInfo("Inserted new home");
-                response.status(201).send({ status: "201" });
-                return;
-            }
-
-            response.sendStatus(400);
         }
         catch (error) {
             this.logger.logError('Can\'t connect to database');
@@ -191,6 +193,86 @@ export class ExpressApiService extends AbstractApi {
         response.status(404).end('404 - PAGE NOT FOUND');
     }
 
+
+
+
+    public createLogMessageAsync = async (request: express.Request, response: express.Response): Promise<void> => {
+        try {
+            if (!request.body.message) {
+                response.sendStatus(400);
+                return;
+            }
+
+            const result = await this.dbms.insertLogMessageAsync(request.body);
+
+            if (result) {
+                this.logger.logInfo("Inserted new log message");
+                response.status(201).send({ status: "201" });
+                return;
+            }
+
+            response.sendStatus(400);
+        }
+        catch (error) {
+            this.logger.logError('Can\'t connect to database');
+            response.sendStatus(500);
+        }
+    }
+
+    public listLogMessagesAsync = async (request: express.Request, response: express.Response): Promise<void> => {
+        try {
+            let result: LogMessage[] = await this.dbms.getLogMessagesAsync();
+            this.logger.logInfo("Sent available log messages!");
+            response.status(200).send(result);
+        }
+        catch (error) {
+            this.logger.logError('Can\'t connect to database');
+            response.sendStatus(500);
+        }
+    }
+
+    public dropTableAsync = async (request: express.Request, response: express.Response): Promise<void> => {
+        try {
+            if (!request.body.name) {
+                response.sendStatus(400);
+                return;
+            }
+
+            const result = await this.dbms.resetTableName(request.body);
+
+            if (result) {
+                this.logger.logInfo("Table " + request.body + " dropped!");
+                response.status(201).send({ status: "201" });
+                return;
+            }
+
+            response.sendStatus(400);
+        }
+        catch (error) {
+            this.logger.logError('Can\'t connect to database');
+            response.sendStatus(500);
+        }
+    }
+
+    public dropDatabaseAsync = async (request: express.Request, response: express.Response): Promise<void> => {
+        try {
+            const result = await this.dbms.resetDatabase();
+
+            if (result) {
+                this.logger.logInfo("Database dropped!");
+                response.status(201).send({ status: "201" });
+                return;
+            }
+
+            response.sendStatus(400);
+        }
+        catch (error) {
+            this.logger.logError('Can\'t connect to database');
+            response.sendStatus(500);
+        }
+    }
+
+
     // initializes api
     public initializeApi(): void {
         this.app.use(cors());
@@ -210,7 +292,12 @@ export class ExpressApiService extends AbstractApi {
 
         this.app.route('/home')
             .get(this.getHomeAsync)
+            .put(this.updateHomeAsync)
             .post(this.createHomeAsync);
+
+        this.app.route('/history')
+            .get(this.listLogMessagesAsync)
+            .post(this.createLogMessageAsync);
 
         this.app.use(this.handleNotFound);
     }

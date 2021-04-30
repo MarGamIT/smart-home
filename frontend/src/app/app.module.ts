@@ -42,6 +42,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     PageNotFoundComponent,
     NavigationComponent,
     AdminComponent,
-    ProfileComponent
+    ProfileComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserAnimationsModule,

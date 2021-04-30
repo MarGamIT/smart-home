@@ -7,4 +7,3 @@ export interface Home {
     members: User[];
     modules: Module[];
 }
-
