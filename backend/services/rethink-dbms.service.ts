@@ -167,13 +167,10 @@ export class RethinkDBMSService extends AbstractDBMS {
             .run(connection);
     }
 
-
     public async resetDatabase(): Promise<DBChangeResult> {
         const connection = await this.connectAsync();
         return r.dbDrop(this.database).run(connection);
     }
-
-
 
     // initializes dbms
     public async initializeSystemAsync(): Promise<boolean> {
@@ -181,12 +178,13 @@ export class RethinkDBMSService extends AbstractDBMS {
         const databaseResult = await this.createDatabaseAsync(connection);
         const userTableResult = await this.createTableAsync(connection, this.userTable);
         const entryTableResult = await this.createTableAsync(connection, this.homeTable);
+        const historyTableResult = await this.createTableAsync(connection, this.historyTable);
 
         await this.insertUserAsync({ id: "1000000000000000", role: Role.Admin, name: "admin", password: "admin" });
         await this.insertHomeAsync({ id: "0000000000000001", members: [], modules: [] });
 
 
-        return !!databaseResult.dbs_created || !!userTableResult.tables_created || !!entryTableResult.tables_created;
+        return !!databaseResult.dbs_created || !!userTableResult.tables_created || !!entryTableResult.tables_created || !!historyTableResult.tables_created;
     }
 
     // builds a database connection

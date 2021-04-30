@@ -25,6 +25,9 @@ export class HistoryService {
   public async createLogMessageAsync(logMessageData: LogMessage): Promise<LogMessage | null> {
     let logMessage: LogMessage | null = null;
 
+    console.info(logMessage);
+    console.info(logMessageData);
+
     await this.http.post('http://localhost:3000/history', logMessageData).toPromise().then((response: any) => {
       this.messageService.add({ key: 'logMessageCreationSuccess', severity: 'success', summary: 'Success', detail: 'Log message creation was successful' });
       logMessage = response;

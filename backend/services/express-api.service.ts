@@ -193,15 +193,14 @@ export class ExpressApiService extends AbstractApi {
         response.status(404).end('404 - PAGE NOT FOUND');
     }
 
-
-
-
     public createLogMessageAsync = async (request: express.Request, response: express.Response): Promise<void> => {
         try {
             if (!request.body.message) {
                 response.sendStatus(400);
                 return;
             }
+
+            console.info(request.body);
 
             const result = await this.dbms.insertLogMessageAsync(request.body);
 

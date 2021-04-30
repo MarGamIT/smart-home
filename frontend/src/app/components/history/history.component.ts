@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from 'src/app/services/history.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Activity } from '../../../../../library/models/activity.model';
+import { LogMessage } from '../../../../../library/models/logMessage.model';
 
 @Component({
   selector: 'app-history',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  public history: LogMessage[] | null = null;
 
-  ngOnInit(): void {
+  constructor(public historyService: HistoryService, public loginService: LoginService) {
   }
 
+  async ngOnInit(): Promise<void> {
+    await this.historyService.createLogMessageAsync({ id: "", date: new Date(), type: Activity.User, user: this.loginService.user!, message: "User visits history" });
+    this.history = await this.historyService.getHistoryAsync();
+  }
 }
