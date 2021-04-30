@@ -1,17 +1,10 @@
-import { Actuator } from "./actuator.model";
-import { Sensor } from "./sensor.model";
+import { Module } from "./module.model";
 import { User } from "./user.model";
 
 
 export interface Home {
     id: string;
     members: User[];
-    module: Module[];
+    modules: Module[];
 }
 
-export interface Module {
-    id: string;
-    name: string;
-    sensors: Sensor[];
-    actuators: Actuator[];
-}

@@ -149,7 +149,7 @@ export class RethinkDBMSService extends AbstractDBMS {
         const entryTableResult = await this.createTableAsync(connection, this.homeTable);
 
         await this.insertUserAsync({ id: "1000000000000000", role: Role.Admin, name: "admin", password: "admin" });
-        await this.insertHomeAsync({ id: "0000000000000001", members: [], Room: [] });
+        await this.insertHomeAsync({ id: "0000000000000001", members: [], modules: [] });
 
 
         return !!databaseResult.dbs_created || !!userTableResult.tables_created || !!entryTableResult.tables_created;
