@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Module, SmartHomeElement } from '../../../../../library/models/module.model';
+import { Module } from '../../../../../library/models/module.model';
+import { SmartHomeElement } from "../../../../../library/models/smartHomeElement.model";
 
 @Component({
   selector: 'app-control',
@@ -41,8 +42,167 @@ export class ControlComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var test:Module = {id: "1", name: "Kitchen", description: "Power: 400W", sensor: {id: "11", name: "KitchenSensor", value: 22, isActivated: true}, actuator: {id: "22", name: "lul", value: 22, isActivated: true}, type: SmartHomeElement.lamp};
-    this.modules.push(test);
-    this.modules.push(test);
+    var nursery: Module = {
+      id: "", name: "Nursery ", description: "",
+      sensor: {
+        id: "",
+        name: "",
+        value: 22,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "lul",
+        value: 20,
+        isActivated: true
+      },
+      type: SmartHomeElement.ac
+    };
+
+    var kitchenLamp: Module = {
+      id: "", name: "Kitchen Lamp", description: "Power: 400W",
+      sensor: {
+        id: "",
+        name: "KitchenLampSensor",
+        value: 0,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "KitchenLampActuator",
+        value: 0,
+        isActivated: true
+      },
+      type: SmartHomeElement.lamp
+    };
+
+    var floorLamp: Module = {
+      id: "", name: "Floor Lamp", description: "Power: 200W",
+      sensor: {
+        id: "",
+        name: "FloorLampSensor",
+        value: 0,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "FloorLampActuator",
+        value: 0,
+        isActivated: true
+      },
+      type: SmartHomeElement.lamp
+    };
+
+    var bedRoom: Module = {
+      id: "", name: "Bed Room", description: "",
+      sensor: {
+        id: "",
+        name: "Bed Room Sensor",
+        value: 22,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "Bed Room Actuator",
+        value: 22,
+        isActivated: true
+      },
+      type: SmartHomeElement.ac
+    };
+
+    var tv: Module = {
+      id: "", name: "TV", description: "Power Rangers",
+      sensor: {
+        id: "",
+        name: "TV Sensor",
+        value: 0,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "TV Actuator",
+        value: 0,
+        isActivated: true
+      },
+      type: SmartHomeElement.tv
+    };
+
+    var ledLight: Module = {
+      id: "", name: "Hall Way LED", description: "Lumen: 2500L",
+      sensor: {
+        id: "",
+        name: "Hall Way Sensor",
+        value: 0x1976D2,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "Hall Way Actuator",
+        value: 16777215,
+        isActivated: true
+      },
+      type: SmartHomeElement.ledLight
+    };
+
+    var oven: Module = {
+      id: "", name: "Oven ", description: "Power: 2300W",
+      sensor: {
+        id: "",
+        name: "Oven Sensor",
+        value: 0,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "Oven Actuator",
+        value: 0,
+        isActivated: true
+      },
+      type: SmartHomeElement.oven
+    };
+    var fridge: Module = {
+      id: "", name: "Fridge  ", description: "Power: 2300W",
+      sensor: {
+        id: "",
+        name: "Fridge Sensor",
+        value: -7,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "Fridge Actuator",
+        value: -10,
+        isActivated: true
+      },
+      type: SmartHomeElement.fridge
+    };
+
+    var kitchen: Module = {
+      id: "", name: "Nursery ", description: "",
+      sensor: {
+        id: "",
+        name: "",
+        value: 28,
+        isActivated: true
+      },
+      actuator: {
+        id: "",
+        name: "lul",
+        value: 22,
+        isActivated: true
+      },
+      type: SmartHomeElement.ac
+    };
+
+    this.modules.push(nursery);
+    this.modules.push(bedRoom);
+    this.modules.push(floorLamp);
+    this.modules.push(oven);
+
+    this.modules.push(fridge);
+    this.modules.push(tv);
+    this.modules.push(ledLight);
+    this.modules.push(kitchenLamp);
+    this.modules.push(kitchen);
   }
 }

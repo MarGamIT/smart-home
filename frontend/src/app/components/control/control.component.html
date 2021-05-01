@@ -1,19 +1,22 @@
 <app-navigation></app-navigation>
 <div class="p-grid p-my-4 p-mx-2">
     <div class="p-col-12 p-md-6 p-lg-4" *ngFor="let module of modules">
-        <p-card *ngIf="module.type=='ac'" header="{{module.name}}" subheader="Measured: {{module.sensor.name}}°C">
+        <p-card *ngIf="module.type=='ac'" header="{{module.name}}" subheader="Measured: {{module.sensor.value}}°C">
             <ng-template pTemplate="footer">
                 <div class="p-d-flex p-jc-between">
                     <i class="pi pi-sliders-h p-as-center" style="font-size: x-large;"></i>
-                    <p-inputNumber suffix="℃" [min]="14" [max]="28" [(ngModel)]="module.actuator.value" class="p-ml-3"></p-inputNumber>
+                    <p-inputNumber suffix="℃" [min]="14" [max]="28" [(ngModel)]="module.actuator.value" class="p-ml-3">
+                    </p-inputNumber>
                 </div>
             </ng-template>
         </p-card>
         <p-card *ngIf="module.type=='lamp'" header={{module.name}} subheader={{module.description}}>
             <ng-template pTemplate="footer">
                 <div class="p-d-flex p-jc-between p-pt-1">
-                    <i *ngIf="!module.actuator.isActivated" class="pi pi-sun p-as-center" style="font-size: x-large;"></i>
-                    <i *ngIf="module.actuator.isActivated" class="pi pi-sun p-as-center" style="font-size: x-large; color: yellow;"></i>
+                    <i *ngIf="!module.actuator.isActivated" class="pi pi-sun p-as-center"
+                        style="font-size: x-large;"></i>
+                    <i *ngIf="module.actuator.isActivated" class="pi pi-sun p-as-center"
+                        style="font-size: x-large; color: yellow;"></i>
                     <p-inputSwitch [(ngModel)]="module.actuator.isActivated" class="p-ml-3"></p-inputSwitch>
                 </div>
             </ng-template>
@@ -22,15 +25,18 @@
             <ng-template pTemplate="footer">
                 <div class="p-d-flex p-jc-between p-pt-1">
                     <p-colorPicker [(ngModel)]="module.actuator.value"></p-colorPicker>
-                    <i class="pi pi-sun p-as-center" [ngStyle]="{'font-size': 'x-large', 'color': module.actuator.value}"></i>
+                    <i class="pi pi-sun p-as-center"
+                        [ngStyle]="{'font-size': 'x-large', 'color': module.actuator.value}"></i>
                 </div>
             </ng-template>
         </p-card>
         <p-card *ngIf="module.type=='oven'" header={{module.name}} subheader={{module.description}}>
             <ng-template pTemplate="footer">
                 <div class="p-d-flex p-jc-between p-pt-1">
-                    <i *ngIf="!module.actuator.isActivated" class="pi pi-power-off p-as-center" style="font-size: x-large; color: red;"></i>
-                    <i *ngIf="module.actuator.isActivated" class="pi pi-power-off p-as-center" style="font-size: x-large; color: green;"></i>
+                    <i *ngIf="!module.actuator.isActivated" class="pi pi-power-off p-as-center"
+                        style="font-size: x-large; color: red;"></i>
+                    <i *ngIf="module.actuator.isActivated" class="pi pi-power-off p-as-center"
+                        style="font-size: x-large; color: green;"></i>
                     <p-inputSwitch [(ngModel)]="module.actuator.isActivated" class="p-ml-3"></p-inputSwitch>
                 </div>
             </ng-template>
@@ -38,8 +44,10 @@
         <p-card *ngIf="module.type=='tv'" header={{module.name}} subheader={{module.description}}>
             <ng-template pTemplate="footer">
                 <div class="p-d-flex p-jc-between p-pt-1">
-                    <i *ngIf="!module.actuator.isActivated" class="pi pi-power-off pi-circle-off" style="font-size: x-large; color: red;"></i>
-                    <i *ngIf="module.actuator.isActivated" class="pi pi-power-off pi-circle-on" style="font-size: x-large; color: green;"></i>
+                    <i *ngIf="!module.actuator.isActivated" class="pi pi-power-off pi-circle-off"
+                        style="font-size: x-large; color: red;"></i>
+                    <i *ngIf="module.actuator.isActivated" class="pi pi-power-off pi-circle-on"
+                        style="font-size: x-large; color: green;"></i>
                     <p-inputSwitch [(ngModel)]="module.actuator.isActivated" class="p-ml-3"></p-inputSwitch>
                 </div>
             </ng-template>
@@ -48,12 +56,14 @@
             <ng-template pTemplate="footer">
                 <div class="p-d-flex p-jc-between">
                     <i class="pi pi-tablet p-as-center" style="font-size: x-large; color: lightblue;"></i>
-                    <p-inputNumber suffix="℃" [min]="-20" [max]="0" [(ngModel)]="module.actuator.value" class="p-ml-3"></p-inputNumber>
+                    <p-inputNumber suffix="℃" [min]="-20" [max]="0" [(ngModel)]="module.actuator.value" class="p-ml-3">
+                    </p-inputNumber>
                 </div>
             </ng-template>
         </p-card>
     </div>
     <div class="p-col-12">
-        <button pButton type="button" label="Confirm changes" class="p-button-outlined p-button-rounded" [disabled]="confirmButtonDisabled" (click)="updateModulesAsync()"></button>
+        <button pButton type="button" label="Confirm changes" class="p-button-outlined p-button-rounded"
+            [disabled]="confirmButtonDisabled" (click)="updateModulesAsync()"></button>
     </div>
 </div>
