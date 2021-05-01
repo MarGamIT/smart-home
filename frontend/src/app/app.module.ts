@@ -43,6 +43,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { HistoryComponent } from './components/history/history.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { HistoryComponent } from './components/history/history.component';
     NavigationComponent,
     AdminComponent,
     ProfileComponent,
-    HistoryComponent
+    HistoryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserAnimationsModule,

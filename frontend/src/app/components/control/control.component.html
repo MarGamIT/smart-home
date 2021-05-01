@@ -44,9 +44,9 @@
         <p-card *ngIf="module.type=='tv'" header={{module.name}} subheader={{module.description}}>
             <ng-template pTemplate="footer">
                 <div class="p-d-flex p-jc-between p-pt-1">
-                    <i *ngIf="!module.actuator.isActivated" class="pi pi-power-off pi-circle-off"
+                    <i *ngIf="!module.actuator.isActivated" class="pi pi-circle-off p-as-center"
                         style="font-size: x-large; color: red;"></i>
-                    <i *ngIf="module.actuator.isActivated" class="pi pi-power-off pi-circle-on"
+                    <i *ngIf="module.actuator.isActivated" class="pi pi-circle-on p-as-center"
                         style="font-size: x-large; color: green;"></i>
                     <p-inputSwitch [(ngModel)]="module.actuator.isActivated" class="p-ml-3"></p-inputSwitch>
                 </div>

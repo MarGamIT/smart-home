@@ -88,7 +88,7 @@ export class ControlComponent implements OnInit {
         id: "",
         name: "FloorLampActuator",
         value: 0,
-        isActivated: true
+        isActivated: false
       },
       type: SmartHomeElement.lamp
     };
@@ -111,7 +111,7 @@ export class ControlComponent implements OnInit {
     };
 
     var tv: Module = {
-      id: "", name: "TV", description: "Power Rangers",
+      id: "", name: "TV", description: "Running: Power Rangers",
       sensor: {
         id: "",
         name: "TV Sensor",
@@ -128,17 +128,17 @@ export class ControlComponent implements OnInit {
     };
 
     var ledLight: Module = {
-      id: "", name: "Hall Way LED", description: "Lumen: 2500L",
+      id: "", name: "Hallway LED", description: "Power: 12,34W",
       sensor: {
         id: "",
-        name: "Hall Way Sensor",
-        value: 0x1976D2,
+        name: "Hallway Sensor",
+        value: '#1976D2',
         isActivated: true
       },
       actuator: {
         id: "",
         name: "Hall Way Actuator",
-        value: 16777215,
+        value: '#1976D2',
         isActivated: true
       },
       type: SmartHomeElement.ledLight
@@ -156,7 +156,7 @@ export class ControlComponent implements OnInit {
         id: "",
         name: "Oven Actuator",
         value: 0,
-        isActivated: true
+        isActivated: false
       },
       type: SmartHomeElement.oven
     };
@@ -178,7 +178,7 @@ export class ControlComponent implements OnInit {
     };
 
     var kitchen: Module = {
-      id: "", name: "Nursery ", description: "",
+      id: "", name: "Kitchen ", description: "",
       sensor: {
         id: "",
         name: "",

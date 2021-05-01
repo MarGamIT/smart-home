@@ -23,7 +23,7 @@ export class LoginService {
     await this.http.post('http://localhost:3000/login', loginData).toPromise().then((response: any) => {
       this.user = response;
       this.isLoggedIn = true;
-      this.router.navigate(['/control']);
+      this.router.navigate(['/home']);
     }).catch((error) => this.messageService.add({ key: 'loginError', severity: 'error', summary: 'Error', detail: 'Login not possible' }));
   }
 
