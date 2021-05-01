@@ -6,10 +6,10 @@ import { User } from '../../../../../library/models/user.model';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  templateUrl: './profil.component.html',
+  styleUrls: ['./profil.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfilComponent implements OnInit {
 
   public user: User | null;
   public editedUser: User | null;
