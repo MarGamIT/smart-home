@@ -1,1 +1,58 @@
 <app-navigation></app-navigation>
+<div class="p-d-flex p-flex-column p-fluid p-ai-center p-jc-center">
+    <div class="p-d-flex p-flex-column content">
+        <div class="p-as-center">
+            <h1 class="title">YOUR PROFILE</h1>
+        </div>
+        <div class="p-as-center">
+            <p-avatar class="icon" icon="pi pi-user" size="xlarge" shape="circle"></p-avatar>
+        </div>
+        <div class="p-grid p-mt-5">
+            <div class="p-col-12">
+                <span>ID</span>
+            </div>
+            <div *ngIf="user!.id" class="p-col-12">
+                <span class="value">{{user!.id}}</span>
+            </div>
+            <div *ngIf="!user!.id" class="p-col-12">
+                <span class="p-text-bold">???</span>
+            </div>
+        </div>
+        <div class="p-grid p-mt-5">
+            <div class="p-col-12">
+                <span>Name</span>
+            </div>
+            <div *ngIf="user!.name" class="p-col-12">
+                <span class="value">{{user!.name}}</span>
+            </div>
+            <div *ngIf="!user!.name" class="p-col-12">
+                <span class="p-text-bold">???</span>
+            </div>
+        </div>
+        <div class="p-grid p-mt-5">
+            <button pButton pRipple type="button" label="Change settings" [disabled]="!user" class="btn"
+                (click)="editUserAsync(user)"></button>
+        </div>
+    </div>
+</div>
+<p-dialog [(visible)]="profileDialog" [style]="{width: '450px'}" header="Profile Details" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="name">Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="editedUser!.name" autofocus required [min]="1" />
+        </div>
+        <div class="p-field">
+            <label for="password">Password</label>
+            <input type="password" pInputText id="password" [(ngModel)]="editedUser!.password" required />
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" [disabled]="!editedUser!.name"
+            (click)="saveUserAsync()"></button>
+    </ng-template>
+</p-dialog>
+<p-toast position="bottom-center" key="userUpdateSuccess"></p-toast>
+<p-toast position="bottom-center" key="userUpdateError"></p-toast>

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../../../../library/models/user.model'
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Activity } from '../../../../library/models/activity.model';
+import { HistoryService } from './history.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +15,17 @@ export class LoginService {
 
   public isLoggedIn: boolean;
 
-  constructor(private http: HttpClient, private router: Router, private messageService: MessageService) {
+  constructor(private http: HttpClient, private router: Router, private messageService: MessageService, public historyService: HistoryService) {
     this.user = null;
     this.isLoggedIn = false;
   }
 
   // creates login session
   public async createLoginSessionAsync(loginData: User): Promise<void> {
-    await this.http.post('http://localhost:3000/login', loginData).toPromise().then((response: any) => {
+    await this.http.post('http://localhost:3000/login', loginData).toPromise().then(async (response: any) => {
       this.user = response;
       this.isLoggedIn = true;
+      await this.historyService.createLogMessageAsync({ id: "", date: new Date(), type: Activity.Config, user: loginData!, message: "Home added" });
       this.router.navigate(['/control']);
     }).catch((error) => this.messageService.add({ key: 'loginError', severity: 'error', summary: 'Error', detail: 'Login not possible' }));
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HistoryService } from 'src/app/services/history.service';
 import { LoginService } from 'src/app/services/login.service';
+import { Activity } from '../../../../../library/models/activity.model';
 import { Role } from '../../../../../library/models/role.model';
 import { User } from '../../../../../library/models/user.model';
 
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public loginButtonDisabled: boolean;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService) {
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, public historyService: HistoryService) {
     this.loginButtonDisabled = false;
     this.loginForm = this.formBuilder.group({
       name: ['', Validators.required],
