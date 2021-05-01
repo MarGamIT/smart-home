@@ -28,13 +28,5 @@ export class NavigationComponent implements OnInit {
       { label: 'Configuration', icon: 'pi pi-fw pi-cog', routerLink: '/config' },
       { label: 'History', icon: 'pi pi-fw pi-book', routerLink: '/history' },
     ];
-
-    if (this.loginService.user?.role === Role.User) {
-      this.items.push({ label: 'Profil', icon: 'pi pi-fw pi-book', routerLink: '/profil' });
-    }
-
-    if (this.loginService.user?.role === Role.Admin) {
-      this.items.push({ label: 'Admin', icon: 'pi pi-fw pi-users', routerLink: '/admin' });
-    }
   }
 }
