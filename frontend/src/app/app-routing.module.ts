@@ -4,7 +4,6 @@ import { Role } from '../../../library/models/role.model';
 import { AdminComponent } from './components/admin/admin.component';
 import { ControlComponent } from './components/control/control.component';
 import { HistoryComponent } from './components/history/history.component';
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'control', component: ControlComponent, canActivate: [AuthenticationGuardService] },
   { path: 'history', component: HistoryComponent, canActivate: [AuthenticationGuardService] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuardService] },
   { path: 'admin', component: AdminComponent, canActivate: [RoleGuardService], data: { expectedRole: Role.Admin } },
   { path: '**', component: PageNotFoundComponent }];

@@ -14,7 +14,6 @@ import { RegistrationService } from './services/registration.service';
 import { AuthenticationGuardService } from './guards/authentication.guard.service';
 import { AuthenticationService } from './guards/authentication.service';
 
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -48,7 +47,6 @@ import { HistoryComponent } from './components/history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     LoginComponent,
     RegistrationComponent,
     ControlComponent,
@@ -83,7 +81,8 @@ import { HistoryComponent } from './components/history/history.component';
     RippleModule,
     TooltipModule,
     DropdownModule,
-    ColorPickerModule
+    ColorPickerModule,
+    InputNumberModule
   ],
   providers: [
     {
