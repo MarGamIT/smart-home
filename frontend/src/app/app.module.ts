@@ -20,7 +20,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ControlComponent } from './components/control/control.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 import { DialogModule } from 'primeng/dialog';
 import { AvatarModule } from 'primeng/avatar';
@@ -45,6 +45,7 @@ import { ColorPickerModule } from 'primeng/colorpicker';
 import { HistoryComponent } from './components/history/history.component';
 import { HomeComponent } from './components/home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,10 +55,9 @@ import { HomeComponent } from './components/home/home.component';
     PageNotFoundComponent,
     NavigationComponent,
     AdminComponent,
-    ProfileComponent,
+    ProfilComponent,
     HistoryComponent,
-    HomeComponent
-  ],
+    HomeComponent],
   imports: [
     BrowserAnimationsModule,
     FormsModule,

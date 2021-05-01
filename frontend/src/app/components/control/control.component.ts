@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from 'src/app/services/history.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Activity } from '../../../../../library/models/activity.model';
 import { Module } from '../../../../../library/models/module.model';
 import { SmartHomeElement } from "../../../../../library/models/smartHomeElement.model";
 
@@ -20,7 +23,7 @@ export class ControlComponent implements OnInit {
   public tvValue: boolean;
   public fridgeValue: number;
 
-  constructor() {
+  constructor(public historyService: HistoryService, public loginService: LoginService) {
     this.confirmButtonDisabled = false;
     this.modules = [];
     this.nurseryValue = 20;

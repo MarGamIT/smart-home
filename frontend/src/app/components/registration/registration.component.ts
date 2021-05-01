@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HistoryService } from 'src/app/services/history.service';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { Activity } from '../../../../../library/models/activity.model';
 import { Role } from '../../../../../library/models/role.model';
 import { User } from '../../../../../library/models/user.model';
 
@@ -13,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   public registerForm: FormGroup;
   public registerButtonDisabled: boolean;
 
-  constructor(private formBuilder: FormBuilder, private registrationService: RegistrationService) {
+  constructor(private formBuilder: FormBuilder, private registrationService: RegistrationService, public historyService: HistoryService) {
     this.registerButtonDisabled = false;
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
