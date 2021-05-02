@@ -199,9 +199,7 @@ export class ExpressApiService extends AbstractApi {
                 response.sendStatus(400);
                 return;
             }
-
-            console.info(request.body);
-
+            
             const result = await this.dbms.insertLogMessageAsync(request.body);
 
             if (result) {

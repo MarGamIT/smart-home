@@ -17,7 +17,6 @@ export class HistoryComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    await this.historyService.createLogMessageAsync({ id: "", date: new Date(), type: Activity.User, user: this.loginService.user!, message: "User visits history" });
     this.history = await this.historyService.getHistoryAsync();
   }
 }

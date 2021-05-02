@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { LoginService } from 'src/app/services/login.service';
-import { Role } from '../../../../../library/models/role.model';
 
 @Component({
   selector: 'app-navigation',

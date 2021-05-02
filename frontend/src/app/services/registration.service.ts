@@ -17,7 +17,7 @@ export class RegistrationService {
   public async createUserAsync(registrationData: User): Promise<void> {
     await this.http.post('http://localhost:3000/users', registrationData).toPromise().then(async (response: any) => {
       this.messageService.add({ key: 'registrationSuccess', severity: 'success', summary: 'Success', detail: 'Registration was successful' })
-      await this.historyService.createLogMessageAsync({ id: "", date: new Date(), type: Activity.User, user: registrationData!, message: "New User Inserted" });
+      await this.historyService.createLogMessageAsync({ id: "", date: new Date(), type: Activity.User, user: registrationData!, message: "New user signed up" });
     }).catch((error) => this.messageService.add({ key: 'registrationError', severity: 'error', summary: 'Error', detail: 'Registration not possible' }));
   }
 }
