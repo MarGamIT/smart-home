@@ -180,7 +180,7 @@ export class ExpressApiService extends AbstractApi {
                 return;
             }
 
-            response.sendStatus(400);
+            response.status(400).send({ user: result });
         }
         catch (error) {
             this.logger.logError('Can\'t connect to database');
