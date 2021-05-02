@@ -199,7 +199,7 @@ export class ExpressApiService extends AbstractApi {
                 response.sendStatus(400);
                 return;
             }
-            
+
             const result = await this.dbms.insertLogMessageAsync(request.body);
 
             if (result) {
@@ -295,6 +295,12 @@ export class ExpressApiService extends AbstractApi {
         this.app.route('/history')
             .get(this.listLogMessagesAsync)
             .post(this.createLogMessageAsync);
+
+        this.app.route('/table')
+            .delete(this.dropTableAsync);
+
+        this.app.route('/database')
+            .delete(this.dropDatabaseAsync);
 
         this.app.use(this.handleNotFound);
     }

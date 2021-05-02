@@ -45,6 +45,7 @@ import { ColorPickerModule } from 'primeng/colorpicker';
 import { HistoryComponent } from './components/history/history.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
+import { TestComponent } from './components/test/test.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ConfigurationComponent } from './components/configuration/configuration
     ProfilComponent,
     HistoryComponent,
     HomeComponent,
-    ConfigurationComponent],
+    ConfigurationComponent,
+    TestComponent],
   imports: [
     BrowserAnimationsModule,
     FormsModule,

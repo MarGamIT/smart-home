@@ -13,13 +13,13 @@ export abstract class AbstractApi {
     // deletes user
     public abstract deleteUserAsync(request: express.Request, response: express.Response): Promise<void>;
 
-
     public abstract createLogMessageAsync(request: express.Request, response: express.Response): Promise<void>;
+
     public abstract listLogMessagesAsync(request: express.Request, response: express.Response): Promise<void>;
+
     public abstract dropTableAsync(request: express.Request, response: express.Response): Promise<void>;
+
     public abstract dropDatabaseAsync(request: express.Request, response: express.Response): Promise<void>;
-
-
 
     // creates login session
     public abstract createSessionAsync(request: express.Request, response: express.Response): Promise<void>;
