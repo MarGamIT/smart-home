@@ -1,7 +1,5 @@
 <app-navigation></app-navigation>
-<p-table [rowHover]="true" styleClass="p-datatable-sm p-my-3 p-mx-3" [value]="users" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {{users.length}} users" sortMode="single"
-    [rowsPerPageOptions]="[10,25,50]">
+<p-table styleClass="p-datatable-sm p-my-3 p-mx-3" [rowHover]="true" [value]="users" [paginator]="true" [rows]="15" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {{users.length}} users" sortMode="multiple" [rowsPerPageOptions]="[15,30,45]">
     <ng-template pTemplate="header">
         <tr>
             <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon>
