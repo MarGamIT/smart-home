@@ -39,7 +39,7 @@
             <label for="backwash">Password</label>
             <input type="password" pInputText id="password" [(ngModel)]="editedUser!.password" />
         </div>
-        <div class="p-field">
+        <div class="p-field p-pb-6">
             <label>Role</label>
             <p-dropdown [options]="roles" [(ngModel)]="editedUser!.role" optionLabel="role" optionValue="role">
             </p-dropdown>
@@ -53,6 +53,7 @@
     </ng-template>
 </p-dialog>
 
+<p-toast position="bottom-center" key="userUpdateSuccess"></p-toast>
 <p-toast position="bottom-center" key="requestUsersError"></p-toast>
 <p-toast position="bottom-center" key="userDeletionError"></p-toast>
 <p-toast position="bottom-center" key="userDeletionSuccess"></p-toast>

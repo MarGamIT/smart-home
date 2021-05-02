@@ -1,0 +1,2 @@
+<app-profile *ngIf="authGuard.user?.role === userRole"></app-profile>
+<app-admin *ngIf="authGuard.user?.role === adminRole"></app-admin>
