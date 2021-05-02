@@ -14,7 +14,7 @@
         </span>
         <small *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.dirty"
                 class="p-error">Password required</small>  
-        <button pButton type="button" label="Sign up" class="p-button-outlined p-button-rounded p-as-stretch p-mt-3" [disabled]="!registerForm.valid || registerButtonDisabled" (click)="registerAsync()"></button>
+        <button pButton type="button" label="Sign up" class="p-button-outlined p-button-rounded p-mt-3" [disabled]="!registerForm.valid || registerButtonDisabled" (click)="registerAsync()"></button>
         <span class="p-as-center signin p-mt-3">Already a member? <a class="signin-link" routerLink="/login">Signin</a></span>
     </form>
     <p-toast position="bottom-center" key="registrationSuccess"></p-toast>

@@ -27,5 +27,7 @@ export class NavigationComponent implements OnInit {
       { label: 'Configuration', icon: 'pi pi-fw pi-cog', routerLink: '/config' },
       { label: 'History', icon: 'pi pi-fw pi-book', routerLink: '/history' },
     ];
+
+    console.log(this.router.config);
   }
 }

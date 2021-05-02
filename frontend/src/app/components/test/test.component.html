@@ -1,7 +1,10 @@
 <app-navigation></app-navigation>
-
-<p-button (onClick)="resetDatabaseAsync()">Reset Database</p-button>
-
-<p-button></p-button>
-
-<p-button></p-button>
+<div class="p-d-flex p-flex-row p-jc-center p-ai-center p-fluid p-mt-6">
+    <div class="p-d-flex p-flex-column p-ai-center">
+        <span class="title">test page</span>
+        <button pButton type="button" label="Reset Database" class="p-button-outlined p-button-rounded p-as-stretch p-mt-5" 
+            (click)="resetDatabaseAsync()"></button>
+        <button pButton type="button" label="???" class="p-button-outlined p-button-rounded p-mt-3"></button>
+        <button pButton type="button" label="???" class="p-button-outlined p-button-rounded p-mt-3"></button>
+    </div>
+</div>
