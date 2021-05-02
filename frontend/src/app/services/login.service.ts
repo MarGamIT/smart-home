@@ -36,6 +36,11 @@ export class LoginService {
   }
 
   public async logoutAsync() {
+
+    if (this.user! === undefined || this.user! === null || !this.isLoggedIn) {
+      return;
+    }
+
     await this.historyService.createLogMessageAsync({ id: "", date: new Date(), type: Activity.User, user: this.user!, message: "Login session stopped" });
     this.user = null;
     this.isLoggedIn = false;
