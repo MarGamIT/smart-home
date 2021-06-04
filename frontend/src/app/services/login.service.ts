@@ -27,14 +27,7 @@ export class LoginService {
       this.isLoggedIn = true;
       await this.historyService.createLogMessageAsync({ id: "", date: new Date(), type: Activity.User, user: loginData!, message: "Login session created" });
       this.router.navigate(['/home']);
-    }).catch((response: any) => {
-      if (response.error?.user!) {
-        console.info(loginData.password + "==!" + response.error.user.password);
-        this.messageService.add({
-          key: 'loginError', severity: 'error', summary: 'Error', detail: 'Login not possible'
-        })
-      }
-    });
+    }).catch((error) => this.messageService.add({ key: 'loginError', severity: 'error', summary: 'Error', detail: 'Login not possible' }));
   }
 
   public async logoutAsync() {
