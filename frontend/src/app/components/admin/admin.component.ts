@@ -16,7 +16,6 @@ export class AdminComponent implements OnInit {
   public editUserButtonDisabled: boolean;
   public editedUser: User | null;
   public userDialog: boolean;
-  //public roles = [Role.Admin, Role.User];
   public roles = [{ role: "Admin" }, { role: "User" }];
 
   constructor(private adminService: AdminService, private loginServices: LoginService) {
