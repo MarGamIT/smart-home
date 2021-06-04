@@ -7,12 +7,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { TestComponent } from './components/test/test.component';
 import { AuthenticationGuardService } from './guards/authentication.guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'test', component: TestComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuardService] },
